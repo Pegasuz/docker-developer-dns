@@ -101,7 +101,7 @@ You need to make sure your host can resolve the docker dns entries.
 
 On a system using resolvconf (eg. ubuntu) you can add this nameserver to the head.
 ~~~ sh
-$ echo "nameserver 127.0.0.1" > /etc/resolvconf/resolv.conf.d/head
+# echo "nameserver 127.0.0.1" > /etc/resolvconf/resolv.conf.d/head
 ~~~
 
 After making changes to resolvconf, you need to trigger a reload: `sudo resolvconf -u`
