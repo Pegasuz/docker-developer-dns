@@ -104,7 +104,7 @@ This can be done in many ways, depending on the system you use.
 
 On a system using resolvconf (eg. ubuntu) you can add this nameserver to the head.
 ~~~ sh
-$ echo "nameserver 127.0.0.1" > /etc/resolvconf/resolv.conf.d/head
+# echo "nameserver 127.0.0.1" > /etc/resolvconf/resolv.conf.d/head
 ~~~
 
 After making changes to resolvconf, you need to trigger a reload:
@@ -124,7 +124,7 @@ On systems where openresolv is used you can use the file from
 On systems using systemd resolved (eg. Ubuntu 17.04) you need to change:
 
 ~~~ sh
-$ echo "DNS=127.0.0.1" >> /etc/systemd/resolved.conf
+# echo "DNS=127.0.0.1" >> /etc/systemd/resolved.conf
 ~~~
 
 Reload resolved service:
