@@ -98,16 +98,41 @@ Resolve via developer-dns
 -------------------------
 
 You need to make sure your host can resolve the docker dns entries.
+This can be done in many ways, depending on the system you use.
+
+#### resolvconf
 
 On a system using resolvconf (eg. ubuntu) you can add this nameserver to the head.
 ~~~ sh
 $ echo "nameserver 127.0.0.1" > /etc/resolvconf/resolv.conf.d/head
 ~~~
 
-After making changes to resolvconf, you need to trigger a reload: `sudo resolvconf -u`
+After making changes to resolvconf, you need to trigger a reload:
+
+~~~sh
+sudo resolvconf -u
+~~~
+
+#### openresolv
 
 On systems where openresolv is used you can use the file from
 [contrib](contrib/openresolv/resolvconf.conf) and place it in
 `/etc/resolvconf.conf`.
 
-You could also add it to your network configuration gui like NetworkManager.
+#### systemd resolved
+
+On systems using systemd resolved (eg. Ubuntu 17.04) you need to change:
+
+~~~ sh
+$ echo "DNS=127.0.0.1" >> /etc/systemd/resolved.conf
+~~~
+
+Reload resolved service:
+
+~~~sh
+$ sudo systemctl restart systemd-resolved.service
+~~~
+
+#### manual
+
+You could also add it manually to your network configuration gui like NetworkManager.
